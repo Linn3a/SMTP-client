@@ -30,7 +30,7 @@ func main() {
 			AllowHeaders: "*",
 		}))
 
-	err = api.RegisterRoutes(app)
+	api.RegisterRoutes(app)
 
 	if err != nil {
 		log.Fatalf("路由注册失败: %v", err)

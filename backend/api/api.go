@@ -10,7 +10,7 @@ import (
 	"mail/model"
 )
 
-func RegisterRoutes(app *fiber.App) error {
+func RegisterRoutes(app *fiber.App) {
 	type userWhenCreate struct {
 		Username string `json:"username"`
 		Address  string `json:"address"`
@@ -20,7 +20,6 @@ func RegisterRoutes(app *fiber.App) error {
 		Content string           `json:"content"`
 		To      []userWhenCreate `json:"to"`
 	}
-
 	// 登录
 	type loginBody struct {
 		User     string `json:"username"`
@@ -109,7 +108,6 @@ func RegisterRoutes(app *fiber.App) error {
 			"mail":    savedMail,
 		})
 	})
-
 	// 获取所有邮件
 	app.Get("/mails", func(c *fiber.Ctx) error {
 		var mails []*model.Mail
@@ -123,7 +121,6 @@ func RegisterRoutes(app *fiber.App) error {
 			"mails": mails,
 		})
 	})
-
 	// 获取通讯录
 	app.Get("/users", func(c *fiber.Ctx) error {
 		var users []*model.User
@@ -137,7 +134,6 @@ func RegisterRoutes(app *fiber.App) error {
 			"users": users,
 		})
 	})
-
 	// 获取所有草稿
 	app.Get("/crafts", func(c *fiber.Ctx) error {
 		var crafts []*model.Craft
@@ -151,7 +147,6 @@ func RegisterRoutes(app *fiber.App) error {
 			"crafts": crafts,
 		})
 	})
-
 	// 获取单个草稿
 	app.Get("/crafts/:id", func(c *fiber.Ctx) error {
 		id := c.Params("id")
@@ -166,7 +161,6 @@ func RegisterRoutes(app *fiber.App) error {
 			"craft": craft,
 		})
 	})
-
 	// 保存草稿
 	app.Post("/crafts", func(c *fiber.Ctx) error {
 		body := c.Body()
@@ -223,7 +217,6 @@ func RegisterRoutes(app *fiber.App) error {
 		})
 
 	})
-
 	// 更新草稿
 	app.Post("/crafts/:id", func(c *fiber.Ctx) error {
 		body := c.Body()
@@ -281,6 +274,4 @@ func RegisterRoutes(app *fiber.App) error {
 		})
 
 	})
-
-	return nil
 }
