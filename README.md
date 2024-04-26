@@ -1,4 +1,6 @@
-# email-client 📬
+# [2023 Fall] SMTP-client 📬
+
+*Computer Network of Dilin Mao, Fudan University*
 
 ## 介绍
 
